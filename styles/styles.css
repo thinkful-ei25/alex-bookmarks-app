@@ -11,16 +11,6 @@
   display: inline-block;
 }
 
-.form-container {
-  width: 60%;
-  height:150px;
-}
-
-.rating-form-container {
-  width: 33%;
-  height: 150px;
-}
-
 .bookmark-list {
   width: 600px;
   padding: 0px;
@@ -48,8 +38,6 @@
   padding: 5px;
 }
 
-.rating-selection {
-  position: relative;
-  width: 33%;
-  margin: 0;
+.adding-bookmark-form >.rating-selection {
+  width: 100px;
 }

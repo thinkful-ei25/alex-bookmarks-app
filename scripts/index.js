@@ -5,6 +5,7 @@ $(document).ready(function() {
   bookmarkList.render();
   api.getBookmarks(items => {
     items.forEach(item => store.addItem(item));
+    store.addExpandedProp();
     bookmarkList.render();
   });
 });

@@ -5,6 +5,14 @@ const store = (function(){
     this.list.push(item);
   };
 
+  const addExpandedProp = function() {
+    this.list.map(item => item.expanded = false);
+  };
+
+  const setExpandedProp = function(item) {
+    item.expanded = !item.expanded;
+  };
+
   const setAddingItem = function(){
     this.addingItem = !this.addingitem;
   };
@@ -18,9 +26,10 @@ const store = (function(){
     addingItem: false,
     
     addItem,
+    addExpandedProp,
+    setExpandedProp,
     setAddingItem,
     findAndDelete,
-
   };
 
 }());
