@@ -7,12 +7,12 @@
   margin: 0 auto;
 }
 
-.bookmark-item-controls {
+.bookmark-list-controls {
   display: inline-block;
 }
 
 .form-container {
-  width: 66%;
+  width: 60%;
   height:150px;
 }
 
@@ -50,6 +50,6 @@
 
 .rating-selection {
   position: relative;
-  max-width: 150px;
+  width: 33%;
   margin: 0;
 }

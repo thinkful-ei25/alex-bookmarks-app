@@ -7,57 +7,25 @@
 </head>
 <body>
   <div class ="container">
-    <form><h1>Let's Bookmark!</h1>
-      <div class ="bookmark-list-controls container">
-        <form class="adding-bookmark-form form-container">
+    <h1>Let's Bookmark!</h1>
+      <div class ="bookmark-list-controls container" id="bookmark-list-controls">
+        <form class="adding-bookmark-form form-container" id="adding-bookmark-form">
             <label for="bookmark-list-entry-title">Add a bookmark:</label><br>
             <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title...">
-            <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="http://example.com">
+            <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com">
             <input type="text" name="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description...">
-          </form>
-        
-          <form class="rating-form-container">
             <fieldset class="rating-selection">
               <legend>Rating</legend>
-              <div><input type="radio" value="5 stars">5 stars</div>
-              <div><input type="radio" value="4 stars">4 stars</div>
-              <div><input type="radio" value="3 stars">3 stars</div>
-              <div><input type="radio" value="2 stars">2 stars</div>
-              <div><input type="radio" value="1 star">1 star</div>
+              <div><input type="radio" name="rating" value="5" checked >5 stars</div>
+              <div><input type="radio" name="rating" value="4">4 stars</div>
+              <div><input type="radio" name="rating" value="3">3 stars</div>
+              <div><input type="radio" name="rating" value="2">2 stars</div>
+              <div><input type="radio" name="rating" value="1">1 star</div>
             </fieldset>
+            <button type="submit">Submit</button>
           </form>
-          <button type="submit">Submit</button>
       </div>  
-    </form>
     <ul class="bookmark-list">
-        <li class="bookmark-item js-bookmark-element" data-item-id="sample1id">
-          <h4>SAMPLE1 Rating 5/5</h4>
-          <p>This is a sample descritption of the sample bookmark. Blah blah blah blah blah blah blah blah blah</p>
-          <div class="bookmark-item-controls">
-            <button class="bookmark-item-edit js-item-edit">
-              <span class="button-label">edit</span>
-            </button>
-            <button class="bookmark-item-delete js-item-delete">
-              <span class="button-label">delete</span>
-            </button>
-            <button class="bookmark-item-visit js-item-visit">
-              <span class="button-label">Visit Site</span>
-        </li>
-        <li class="bookmark-item js-bookmark-element" data-item-id="sample2id">
-          <h4>SAMPLE2</h4>
-          <p>This is a sample descritption of the sample bookmark. Blah blah blah blah blah blah blah blah blah</p>
-          <div class="bookmark-item-controls">
-            <button class="bookmark-item-edit js-item-edit">
-              <span class="button-label">edit</span>
-            </button>
-            <button class="bookmark-item-delete js-item-delete">
-              <span class="button-label">delete</span>
-            </button>
-            <button class="bookmark-item-visit js-item-visit">
-                <span class="button-label">Visit Site</span>
-              </button>
-          </div>
-        </li>
     </ul>  
   </div>
   

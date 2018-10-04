@@ -11,8 +11,9 @@ const store = (function(){
 
   return {
     list: [],
-    addItem,
     addingItem: false,
+    
+    addItem,
     setAddingItem,
 
   };
