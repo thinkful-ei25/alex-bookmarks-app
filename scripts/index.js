@@ -1,7 +1,9 @@
 'use strict';
 
 $(document).ready(function() {
-  // api.getItems(items => {
-  //   items.forEach(item => store.addItem(item));
-  // });
+  bookmarkList.render();
+  api.getBookmarks(items => {
+    items.forEach(item => store.addItem(item));
+    bookmarkList.render();
+  });
 });

@@ -7,6 +7,20 @@
   margin: 0 auto;
 }
 
+.bookmark-item-controls {
+  display: inline-block;
+}
+
+.form-container {
+  width: 66%;
+  height:150px;
+}
+
+.rating-form-container {
+  width: 33%;
+  height: 150px;
+}
+
 .bookmark-list {
   width: 600px;
   padding: 0px;
@@ -35,11 +49,7 @@
 }
 
 .rating-selection {
-  display: inline-block;
-  max-width: 200px;
-}
-
-.adding-bookmark-form{
-  display: inline-block;
-  max-width: 400px;
+  position: relative;
+  max-width: 150px;
+  margin: 0;
 }

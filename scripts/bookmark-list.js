@@ -7,22 +7,27 @@ const bookmarkList = (function(){
       <h4>${item.title} ${item.rating}/5</h4>
       </li>`;
   };
-  const generateBookmarkList = function (bookmarkList) {
-    const bookmarks = bookmarkList.map(item => generateBookmarkItemElement(item));
+  const generateBookmarkListString = function (bookmarkArr) {
+    const bookmarks = bookmarkArr.map(item => generateBookmarkItemElement(item));
     return bookmarks.join('');
   };
 
   const render = function () {
-    let list = store.items;
-    if (store.addingItem === true) {
-      let addItemElement = ``;
-    }
-    const bookmarkListString = generateBookmarkList(list);
+    let list = store.list;
+    const bookmarkListString = generateBookmarkListString(list);
+
     $('.bookmark-list').html(bookmarkListString);
+  };
+
+  const handleNewBookmarkSubmit = function () {
+    $('.bookmark-list-controls').submit(event => {
+      event.preventDefault();
+
+    });
   };
 
   return {
     render,
 
-  }
+  };
 }());

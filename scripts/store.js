@@ -5,10 +5,15 @@ const store = (function(){
     this.list.push(item);
   };
 
+  const setAddingItem = function(){
+    this.addingItem = !this.addingitem;
+  };
+
   return {
     list: [],
     addItem,
     addingItem: false,
+    setAddingItem,
 
   };
 
