@@ -44,12 +44,13 @@ const bookmarkList = (function(){
     $('#adding-bookmark-form').submit(event => {
       event.preventDefault();
       const newItemTitle = $('.bookmark-list-entry-title').val();
+      $('.bookmark-list-entry-title').val('');
       const newItemUrl = $('.bookmark-list-entry-url').val();
+      $('.bookmark-list-entry-url').val('');
       const newItemDesc =  $('.bookmark-list-entry-description').val();
+      $('.bookmark-list-entry-description').val('');
       const newItemRating = event.currentTarget.rating.value;
-      console.log(newItemTitle, newItemUrl, newItemDesc, newItemRating);
       api.createBookmark(newItemTitle, newItemUrl, newItemDesc, newItemRating, response => {
-        console.log(response);
         store.addItem(response);
         render();
       });
@@ -69,7 +70,7 @@ const bookmarkList = (function(){
     $('.bookmark-list').on('click', '.js-item-visit', event =>{
       const id = getBookmarkIdFromElement(event.currentTarget);
       let bookmark = store.list.find(item => item.id === id);
-      window.open(bookmark.url, _blank);
+      window.open(bookmark.url, '_blank');
     });
   };
 
