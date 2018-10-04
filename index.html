@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bookmarking App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link rel="stylesheet" href= "styles/styles.css">
+</head>
+<body>
+  <div class ="container">
+    <form><h1>Let's Bookmark!</h1>
+      <div class ="bookmark-list-controls">
+        <form class="adding-bookmark-form">
+          <label for="bookmark-list-entry-title">Add a bookmark:</label><br>
+          <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title...">
+          <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="http://example.com">
+          <input type="text" name="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description...">
+        </form>
+      
+        <fieldset class="rating-selection">
+          <legend>Rating</legend>
+            <div><input type="radio" value="5 stars">5 stars</div>
+            <div><input type="radio" value="4 stars">4 stars</div>
+            <div><input type="radio" value="3 stars">3 stars</div>
+            <div><input type="radio" value="2 stars">2 stars</div>
+            <div><input type="radio" value="1 star">1 star</div>
+        </fieldset>
+        <!-- <button type="click">Add a Bookmark</button>
+        <select name="minimum-rating">
+          <option value="all">All Bookmarks</option>
+          <option value="5">5 Stars</option>
+          <option value="4">4 Stars+</option>
+          <option value="3">3 Stars+</option>
+          <option value="2">2 Stars+</option>
+        </select> -->
+      </div>  
+    </form>
+    <ul class="bookmark-list">
+        <li class="bookmark-item js-bookmark-element" data-item-id="sample1id">
+          <h4>SAMPLE1 Rating 5/5</h4>
+          <p>This is a sample descritption of the sample bookmark. Blah blah blah blah blah blah blah blah blah</p>
+          <div class="bookmark-item-controls">
+            <button class="bookmark-item-edit js-item-edit">
+              <span class="button-label">edit</span>
+            </button>
+            <button class="bookmark-item-delete js-item-delete">
+              <span class="button-label">delete</span>
+            </button>
+            <button class="bookmark-item-visit js-item-visit">
+              <span class="button-label">Visit Site</span>
+        </li>
+        <li class="bookmark-item js-bookmark-element" data-item-id="sample2id">
+          <h4>SAMPLE2</h4>
+          <p>This is a sample descritption of the sample bookmark. Blah blah blah blah blah blah blah blah blah</p>
+          <div class="bookmark-item-controls">
+            <button class="bookmark-item-edit js-item-edit">
+              <span class="button-label">edit</span>
+            </button>
+            <button class="bookmark-item-delete js-item-delete">
+              <span class="button-label">delete</span>
+            </button>
+            <button class="bookmark-item-visit js-item-visit">
+                <span class="button-label">Visit Site</span>
+              </button>
+          </div>
+        </li>
+    </ul>  
+  </div>
+  
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="scripts/api.js"></script>
+<script type="text/javascript" src="scripts/store.js"></script>
+<script type="text/javascript" src="scripts/index.js"></script>
+</html>

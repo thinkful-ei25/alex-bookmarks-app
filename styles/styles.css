@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  max-width:600px;
+  margin: 0 auto;
+}
+
+.bookmark-list {
+  width: 600px;
+  padding: 0px;
+  list-style: none;
+}
+
+.bookmark-list > li {
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.bookmark-list > li > p {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.bookmark-list > li> h4 {
+  margin-top: 5px;
+  width: 300px;
+  padding-left: 5px;
+  margin-right: 0px;
+}
+
+.bookmark-list > li > .bookmark-item-controls {
+  padding: 5px;
+}
+
+.rating-selection {
+  display: inline-block;
+  max-width: 200px;
+}
+
+.adding-bookmark-form{
+  display: inline-block;
+  max-width: 400px;
+}
