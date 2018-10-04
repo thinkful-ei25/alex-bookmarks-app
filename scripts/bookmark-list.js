@@ -27,6 +27,12 @@ const bookmarkList = (function(){
     return bookmarks.join('');
   };
 
+  const getBookmarkIdFromElement = function(bookmark) {
+    return $(bookmark)
+      .closest('.js-bookmark-element')
+      .data('item-id');
+  };
+
   const render = function () {
     let list = store.list;
     const bookmarkListString = generateBookmarkListString(list);
@@ -50,8 +56,28 @@ const bookmarkList = (function(){
     });
   };
 
+  const handleDeleteBookmarkClicked = function() {
+    $('.bookmark-list').on('click', '.js-item-delete', event =>{
+      const id = getBookmarkIdFromElement(event.currentTarget);
+      store.findAndDelete(id);
+      api.deleteBookMark(id, res => console.log(res));
+      render();
+    });
+  };
+
+  const handleVisitSiteClicked = function() {
+    $('.bookmark-list').on('click', '.js-item-visit', event =>{
+      const id = getBookmarkIdFromElement(event.currentTarget);
+      let bookmark = store.list.find(item => item.id === id);
+      window.open(bookmark.url, _blank);
+    });
+  };
+
+
   const bindEventListeners= function() {
     handleNewBookmarkSubmit();
+    handleDeleteBookmarkClicked();
+    handleVisitSiteClicked();
   };
 
   return {
