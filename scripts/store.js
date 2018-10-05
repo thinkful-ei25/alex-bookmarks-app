@@ -21,15 +21,21 @@ const store = (function(){
     this.list = this.list.filter(item => item.id !== id);
   };
 
+  const setRatingFilter = function(val){
+    this.ratingFilter = val;
+  };
+
   return {
     list: [],
     addingItem: false,
+    ratingFilter: 1,
     
     addItem,
     addExpandedProp,
     setExpandedProp,
     setAddingItem,
     findAndDelete,
+    setRatingFilter
   };
 
 }());

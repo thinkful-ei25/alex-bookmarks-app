@@ -38,8 +38,7 @@ const bookmarkList = (function(){
   };
 
   const render = function () {
-    let list = store.list;
-    const bookmarkListString = generateBookmarkListString(list);
+    let bookmarks = store.list;
     const addBookmarkHTML = `<form class="adding-bookmark-form form-container" id="adding-bookmark-form">
       <label for="bookmark-list-entry-title">Add a bookmark:</label><br>
       <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title..." required>
@@ -60,11 +59,16 @@ const bookmarkList = (function(){
       $('#bookmark-list-controls').html(addBookmarkHTML);
     }
 
+    if(store.ratingFilter > 1) {
+      bookmarks = store.list.filter(item => item.rating >= store.ratingFilter);
+    }
+
+    const bookmarkListString = generateBookmarkListString(bookmarks);
     $('.bookmark-list').html(bookmarkListString);
   };
 
   const handleAddBookmarkForm = function() {
-    $('.default-bookmark-list-form').click(event => {
+    $('.default-bookmark-list-form').on('click','.add-bookmark', event => {
       event.preventDefault();
       store.setAddingItem();
       render();
@@ -116,12 +120,22 @@ const bookmarkList = (function(){
     });
   };
 
+  const handleFilterBookmarkList= function() {
+    $('#select').click( event => {
+      const ratingVal = parseInt($('#select option:selected').val(), 10);
+      store.setRatingFilter(ratingVal);
+      console.log(store.ratingFilter);
+      render();
+    });
+  };
+
 
   const bindEventListeners= function() {
+    handleAddBookmarkForm();
     handleNewBookmarkSubmit();
     handleDeleteBookmarkClicked();
     handleVisitSiteClicked();
-    handleAddBookmarkForm();
+    handleFilterBookmarkList();
     handleExtendedBookmark();
   };
 
