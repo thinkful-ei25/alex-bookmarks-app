@@ -9,8 +9,16 @@ const store = (function(){
     this.list.map(item => item.expanded = false);
   };
 
+  const addEditingProp = function() {
+    this.list.map(item => item.editing = false);
+  };
+
   const setExpandedProp = function(item) {
     item.expanded = !item.expanded;
+  };
+
+  const setEditingProp = function(item) {
+    item.editing = !item.editing;
   };
 
   const setAddingItem = function(bool){
@@ -37,7 +45,9 @@ const store = (function(){
     addItem,
     setError,
     addExpandedProp,
+    addEditingProp,
     setExpandedProp,
+    setEditingProp,
     setAddingItem,
     findAndDelete,
     setRatingFilter

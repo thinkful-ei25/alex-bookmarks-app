@@ -35,6 +35,7 @@ const bookmarkList = (function(){
       </div>
       </li>`; 
     }
+
     return `<li class="bookmark-item js-bookmark-element" data-item-id="${item.id}">
       <h4>${item.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating:&nbsp;${item.rating}/5</h4>
       </li>`;
@@ -86,6 +87,7 @@ const bookmarkList = (function(){
       </div>
       <button class="submit-button">Submit</button><button class="cancel-button">Cancel</button>
     </form>`;
+
 
     if(store.error){
       const err = generateError(store.error);
@@ -189,6 +191,15 @@ const bookmarkList = (function(){
       render();
     });
   }; 
+
+  const handleEditClicked = function() {
+    $('.bookmark-list').on('click', '.js-item-edit', event =>{
+      const id = getBookmarkIdFromElement(event.currentTarget);
+      let bookmark = store.list.find(item => item.id === id);;
+      store.setEditingProp(bookmark);
+      render();
+    });
+  };
 
   const bindEventListeners= function() {
     handleAddBookmarkForm();
