@@ -23,9 +23,6 @@ const bookmarkList = (function(){
       <h4>${item.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating:&nbsp;${item.rating}/5</h4>
       <p>${item.desc}</p>
       <div class="bookmark-item-controls">
-      <button class="bookmark-item-edit js-item-edit">
-        <span class="button-label">edit</span>
-      </button>
       <button class="bookmark-item-delete js-item-delete">
         <span class="button-label">delete</span>
       </button>
