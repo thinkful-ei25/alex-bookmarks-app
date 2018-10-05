@@ -17,6 +17,30 @@ body {
   margin-bottom:25px;
 }
 
+.error-container > section, .error-content{
+  height: 26px;
+  width:100%;
+  display: inline-block;
+  background-color: rgb(238, 95, 95);
+  border-radius: 4px;
+}
+
+.error-container > p, .error-message {
+  width:400px;
+  margin: 0;
+  font-size: 22px;
+  text-align: center;
+}
+
+.error-container > button, #cancel-error {
+  margin: 0;
+  width:30px;
+  height:25px;
+  float: left;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
 .form-container{
   width:100%;
   margin-bottom:25px;
@@ -67,7 +91,7 @@ body {
 }
 
 .adding-bookmark-form > label { 
-  margin: 5px;
+  margin: 10px;
   font-size:18px;
   font-weight: 600; 
 }

@@ -13,8 +13,8 @@ const store = (function(){
     item.expanded = !item.expanded;
   };
 
-  const setAddingItem = function(){
-    this.addingItem = !this.addingitem;
+  const setAddingItem = function(bool){
+    this.addingItem = bool;
   };
 
   const findAndDelete = function(id){
@@ -25,7 +25,7 @@ const store = (function(){
     this.ratingFilter = val;
   };
 
-  const setError = function (err) {
+  const setError = function(err) {
     this.error = err;
   };
   return {
@@ -35,12 +35,12 @@ const store = (function(){
     error: null,
     
     addItem,
+    setError,
     addExpandedProp,
     setExpandedProp,
     setAddingItem,
     findAndDelete,
-    setRatingFilter,
-    setError,
+    setRatingFilter
   };
 
 }());

@@ -4,7 +4,7 @@ const bookmarkList = (function(){
   //tested
   const generateError= function(err) {
     let errMessage = '';
-    if(err.responseJSON && err.responseJSON.mesage){
+    if(err.responseJSON && err.responseJSON.message){
       errMessage = err.responseJSON.message;
     } else{
       errMessage = `${err.code} Server Error`;
@@ -13,7 +13,7 @@ const bookmarkList = (function(){
     return`
         <section class="error-content">
         <button id="cancel-error">X</button>
-        <p>${errMessage}</p>
+        <p class="error-message">${errMessage}</p>
       </section>`;
   };
   
@@ -54,12 +54,25 @@ const bookmarkList = (function(){
 
   const render = function () {
     let bookmarks = store.list;
+    
+    const defaultBookmarkHTML= `      
+      <form class = "default-bookmark-list-form">
+        <button type="click" class="add-bookmark">Add a Bookmark</button>
+        <select name="minimum-rating" id="select">
+          <option name="filter-rating" value="1">All Bookmarks</option>
+          <option name="filter-rating" value="5">5 Stars</option>
+          <option name="filter-rating" value="4">4 Stars+</option>
+          <option name="filter-rating" value="3">3 Stars+</option>
+          <option name="filter-rating" value="2">2 Stars+</option>
+        </select>
+      </form>`;
+
     const addBookmarkHTML = `
     <form class="adding-bookmark-form form-container" id="adding-bookmark-form">
       <label for="bookmark-list-entry-title">Add a bookmark:</label><br>
       <div class="input-field">
-        <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title..." required>
-        <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com" required>
+        <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title...">
+        <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com">
         <br><textarea rows =6 cols= 48 name="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description..."></textarea>
       </div>
         <div class="rating-selection">
@@ -70,18 +83,20 @@ const bookmarkList = (function(){
         <div><input type="radio" name="rating" value="2">2 stars</div>
         <div><input type="radio" name="rating" value="1">1 star</div>
       </div>
-      <button type="submit" class="submit-button">Submit</button>
+      <button class="submit-button">Submit</button>
     </form>`;
 
     if(store.error){
       const err = generateError(store.error);
-      $('.error-container').html(err);
+      $('#error-container').html(err);
     } else {
-      $('.error-container').html();
+      $('#error-container').empty();
     }
 
     if(store.addingItem === true) {
       $('#bookmark-list-controls').html(addBookmarkHTML);
+    } else {
+      $('#bookmark-list-controls').html(defaultBookmarkHTML);
     }
 
     if(store.ratingFilter > 1) {
@@ -93,15 +108,15 @@ const bookmarkList = (function(){
   };
 
   const handleAddBookmarkForm = function() {
-    $('.default-bookmark-list-form').on('click','.add-bookmark', event => {
+    $('#bookmark-list-controls').on('click','.add-bookmark', event => {
       event.preventDefault();
-      store.setAddingItem();
+      store.setAddingItem(true);
       render();
     });
   };
 
   const handleNewBookmarkSubmit = function () {
-    $('.adding-bookmark-form').submit( event => {
+    $('#bookmark-list-controls').on('click','.submit-button', event => {
       event.preventDefault();
       const newItemTitle = $('.bookmark-list-entry-title').val();
       $('.bookmark-list-entry-title').val('');
@@ -109,9 +124,12 @@ const bookmarkList = (function(){
       $('.bookmark-list-entry-url').val('');
       const newItemDesc =  $('.bookmark-list-entry-description').val();
       $('.bookmark-list-entry-description').val('');
-      const newItemRating = event.currentTarget.rating.value;
+      const newItemRating = $('input[name=rating]:checked').val();
       api.createBookmark(newItemTitle, newItemUrl, newItemDesc, newItemRating, response => {
+        console.log(store);
         store.addItem(response);
+        store.setAddingItem(false);
+        console.log(store);
         render();
       },
       err => {
@@ -151,7 +169,7 @@ const bookmarkList = (function(){
   };
 
   const handleFilterBookmarkList= function() {
-    $('#select').click( () => {
+    $('#bookmark-list-controls').on('change', '#select', () => {
       const ratingVal = parseInt($('#select option:selected').val(), 10);
       store.setRatingFilter(ratingVal);
       console.log(store.ratingFilter);
@@ -160,8 +178,10 @@ const bookmarkList = (function(){
   };
 
   const handleCloseError = function() {
-    $('.error-container').on('click', '#cancel-error', () =>{
+    $('#error-container').on('click', '#cancel-error', () =>{
+      console.log(store);
       store.setError(null);
+      console.log(store);
       render();
     });
   };
