@@ -23,8 +23,8 @@
 }
 
 .bookmark-list > li > p {
-  padding-left: 5px;
-  padding-right: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .bookmark-list > li> h4 {
@@ -37,7 +37,43 @@
 .bookmark-list > li > .bookmark-item-controls {
   padding: 5px;
 }
+.form-container {
+  margin-bottom:50px;
+  height: 260px;
+}
 
+.adding-bookmark-form > label {
+  position: relative;
+  top: 45px;
+  font-size: 25px;
+}
+.adding-bookmark-form > .inputfield {
+  width:475px;
+  display: inline-block;
+}
+
+.adding-bookmark-form > .inputfield > input { 
+  margin: 5px;
+  margin-left: 0px;
+}
+
+.adding-bookmark-form > .inputfield > .bookmark-list-entry-url { 
+  width: 261px;
+}
+
+.adding-bookmark-form > .inputfield > .bookmark-list-entry-description{
+  height: 150px;
+  width: 470px;
+}
 .adding-bookmark-form >.rating-selection {
+  position: relative;
+  top: 47px;
+  left:20px;
   width: 100px;
+  height: 192px;
+  display: inline-block;
+}
+
+.adding-bookmark-form >.rating-selection > div {
+  padding-bottom: 15px;
 }

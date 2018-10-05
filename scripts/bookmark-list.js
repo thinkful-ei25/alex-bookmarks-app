@@ -103,6 +103,8 @@ const bookmarkList = (function(){
       const id = getBookmarkIdFromElement(event.currentTarget);
       let bookmark = store.list.find(item => item.id === id);
       window.open(bookmark.url, '_blank');
+      store.setExpandedProp(bookmark);
+      render();
     });
   };
 
