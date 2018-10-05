@@ -2,6 +2,21 @@
 
 const bookmarkList = (function(){
   //tested
+  const generateError= function(err) {
+    let errMessage = '';
+    if(err.responseJSON && err.responseJSON.mesage){
+      errMessage = err.responseJSON.message;
+    } else{
+      errMessage = `${err.code} Server Error`;
+    }
+
+    return`
+        <section class="error-content">
+        <button id="cancel-error">X</button>
+        <p>${errMessage}</p>
+      </section>`;
+  };
+  
   const generateBookmarkItemElement = function(item) {
     if (item.expanded === true) {
       return `<li class="bookmark-item js-bookmark-element" data-item-id="${item.id}">
@@ -58,6 +73,13 @@ const bookmarkList = (function(){
       <button type="submit" class="submit-button">Submit</button>
     </form>`;
 
+    if(store.error){
+      const err = generateError(store.error);
+      $('.error-container').html(err);
+    } else {
+      $('.error-container').html();
+    }
+
     if(store.addingItem === true) {
       $('#bookmark-list-controls').html(addBookmarkHTML);
     }
@@ -90,6 +112,11 @@ const bookmarkList = (function(){
       const newItemRating = event.currentTarget.rating.value;
       api.createBookmark(newItemTitle, newItemUrl, newItemDesc, newItemRating, response => {
         store.addItem(response);
+        render();
+      },
+      err => {
+        console.log(err);
+        store.setError(err);
         render();
       });
     });
@@ -124,7 +151,7 @@ const bookmarkList = (function(){
   };
 
   const handleFilterBookmarkList= function() {
-    $('#select').click( event => {
+    $('#select').click( () => {
       const ratingVal = parseInt($('#select option:selected').val(), 10);
       store.setRatingFilter(ratingVal);
       console.log(store.ratingFilter);
@@ -132,6 +159,12 @@ const bookmarkList = (function(){
     });
   };
 
+  const handleCloseError = function() {
+    $('.error-container').on('click', '#cancel-error', () =>{
+      store.setError(null);
+      render();
+    });
+  };
 
   const bindEventListeners= function() {
     handleAddBookmarkForm();
@@ -140,8 +173,9 @@ const bookmarkList = (function(){
     handleVisitSiteClicked();
     handleFilterBookmarkList();
     handleExtendedBookmark();
+    handleCloseError();
   };
-
+  
   return {
     render,
     bindEventListeners

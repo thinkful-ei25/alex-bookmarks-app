@@ -25,17 +25,22 @@ const store = (function(){
     this.ratingFilter = val;
   };
 
+  const setError = function (err) {
+    this.error = err;
+  };
   return {
     list: [],
     addingItem: false,
     ratingFilter: 1,
+    error: null,
     
     addItem,
     addExpandedProp,
     setExpandedProp,
     setAddingItem,
     findAndDelete,
-    setRatingFilter
+    setRatingFilter,
+    setError,
   };
 
 }());
