@@ -13,7 +13,7 @@ const bookmarkList = (function(){
     return`
         <section class="error-content">
         <button id="cancel-error">X</button>
-        <p class="error-message">${errMessage}</p>
+        <p class="error-message">${errMessage} [title: 1 char min, url: http(s):// 5 char min]</p>
       </section>`;
   };
   
@@ -59,11 +59,12 @@ const bookmarkList = (function(){
       <form class = "default-bookmark-list-form">
         <button type="click" class="add-bookmark">Add a Bookmark</button>
         <select name="minimum-rating" id="select">
-          <option name="filter-rating" value="1">All Bookmarks</option>
+          <option name="filter-rating" value="">All Bookmarks</option>
           <option name="filter-rating" value="5">5 Stars</option>
           <option name="filter-rating" value="4">4 Stars+</option>
           <option name="filter-rating" value="3">3 Stars+</option>
           <option name="filter-rating" value="2">2 Stars+</option>
+          <option name="filter-rating" value="1">1 Star (All)</option>
         </select>
       </form>`;
 
@@ -71,7 +72,7 @@ const bookmarkList = (function(){
     <form class="adding-bookmark-form form-container" id="adding-bookmark-form">
       <label for="bookmark-list-entry-title">Add a bookmark:</label><br>
       <div class="input-field">
-        <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title...">
+        <input type="text" id="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title...">
         <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com">
         <br><textarea rows =6 cols= 48 name="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description..."></textarea>
       </div>
