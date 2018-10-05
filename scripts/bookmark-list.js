@@ -83,7 +83,7 @@ const bookmarkList = (function(){
         <div><input type="radio" name="rating" value="2">2 stars</div>
         <div><input type="radio" name="rating" value="1">1 star</div>
       </div>
-      <button class="submit-button">Submit</button>
+      <button class="submit-button">Submit</button><button class="cancel-button">Cancel</button>
     </form>`;
 
     if(store.error){
@@ -126,10 +126,8 @@ const bookmarkList = (function(){
       $('.bookmark-list-entry-description').val('');
       const newItemRating = $('input[name=rating]:checked').val();
       api.createBookmark(newItemTitle, newItemUrl, newItemDesc, newItemRating, response => {
-        console.log(store);
         store.addItem(response);
         store.setAddingItem(false);
-        console.log(store);
         render();
       },
       err => {
@@ -172,19 +170,24 @@ const bookmarkList = (function(){
     $('#bookmark-list-controls').on('change', '#select', () => {
       const ratingVal = parseInt($('#select option:selected').val(), 10);
       store.setRatingFilter(ratingVal);
-      console.log(store.ratingFilter);
       render();
     });
   };
 
   const handleCloseError = function() {
     $('#error-container').on('click', '#cancel-error', () =>{
-      console.log(store);
       store.setError(null);
-      console.log(store);
       render();
     });
   };
+
+  const handleNewBookmarkCancel = function() {
+    $('#bookmark-list-controls').on('click','.cancel-button', (event) => {
+      event.preventDefault();
+      store.setAddingItem(false);
+      render();
+    });
+  }; 
 
   const bindEventListeners= function() {
     handleAddBookmarkForm();
@@ -194,6 +197,7 @@ const bookmarkList = (function(){
     handleFilterBookmarkList();
     handleExtendedBookmark();
     handleCloseError();
+    handleNewBookmarkCancel();
   };
   
   return {

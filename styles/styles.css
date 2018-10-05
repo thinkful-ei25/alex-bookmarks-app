@@ -97,7 +97,7 @@ body {
 }
 
 
-.adding-bookmark-form > .inputfield > button, .submit-button { 
+.adding-bookmark-form > .inputfield > button, .submit-button, .cancel-button { 
   margin:10px;
   margin-left:10px;
   border: 1px solid gray;
