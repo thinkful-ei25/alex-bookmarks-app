@@ -38,11 +38,10 @@
   padding: 5px;
 }
 .form-container {
-  margin-bottom:50px;
   height: 260px;
 }
 
-.adding-bookmark-form > label {
+/* .adding-bookmark-form > label {
   position: relative;
   top: 45px;
   font-size: 25px;
@@ -76,4 +75,4 @@
 
 .adding-bookmark-form >.rating-selection > div {
   padding-bottom: 15px;
-}
+} */

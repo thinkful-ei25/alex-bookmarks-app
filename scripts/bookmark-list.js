@@ -53,13 +53,13 @@ const bookmarkList = (function(){
         <div><input type="radio" name="rating" value="2">2 stars</div>
         <div><input type="radio" name="rating" value="1">1 star</div>
       </fieldset>
-      <button type="submit">Submit</button>
+      <button type="submit" class="submit-button">Submit</button>
       </form>`;
 
-    // if(store.addingItem === true) {
-    //   $('#bookmark-list-controls').html(addBookmarkHTML);
-    //   $('.bookmark-list').html(bookmarkListString);
-    // }
+    if(store.addingItem === true) {
+      $('#bookmark-list-controls').html(addBookmarkHTML);
+    }
+
     $('.bookmark-list').html(bookmarkListString);
   };
 
@@ -72,9 +72,8 @@ const bookmarkList = (function(){
   };
 
   const handleNewBookmarkSubmit = function () {
-    $('#adding-bookmark-form').submit(event => {
+    $('#adding-bookmark-form').submit( event => {
       event.preventDefault();
-      store.setAddingItem();
       const newItemTitle = $('.bookmark-list-entry-title').val();
       $('.bookmark-list-entry-title').val('');
       const newItemUrl = $('.bookmark-list-entry-url').val();
