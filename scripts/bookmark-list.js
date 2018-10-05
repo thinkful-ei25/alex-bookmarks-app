@@ -5,7 +5,7 @@ const bookmarkList = (function(){
   const generateBookmarkItemElement = function(item) {
     if (item.expanded === true) {
       return `<li class="bookmark-item js-bookmark-element" data-item-id="${item.id}">
-      <h4>${item.title} ${item.rating}/5</h4>
+      <h4>${item.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating:${item.rating}/5</h4>
       <p>${item.desc}</p>
       <div class="bookmark-item-controls">
       <button class="bookmark-item-edit js-item-edit">
@@ -21,7 +21,7 @@ const bookmarkList = (function(){
       </li>`; 
     }
     return `<li class="bookmark-item js-bookmark-element" data-item-id="${item.id}">
-      <h4>${item.title} ${item.rating}/5</h4>
+      <h4>${item.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating:${item.rating}/5</h4>
       </li>`;
   };
   
@@ -39,21 +39,24 @@ const bookmarkList = (function(){
 
   const render = function () {
     let bookmarks = store.list;
-    const addBookmarkHTML = `<form class="adding-bookmark-form form-container" id="adding-bookmark-form">
+    const addBookmarkHTML = `
+    <form class="adding-bookmark-form form-container" id="adding-bookmark-form">
       <label for="bookmark-list-entry-title">Add a bookmark:</label><br>
-      <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title..." required>
-      <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com" required>
-      <input type="text" name="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description...">
-      <fieldset class="rating-selection">
-        <legend>Rating</legend>
+      <div class="input-field">
+        <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title..." required>
+        <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com" required>
+        <br><textarea rows =6 cols= 48 name="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description..."></textarea>
+      </div>
+        <div class="rating-selection">
+        <legend>Rate it!</legend>
         <div><input type="radio" name="rating" value="5" checked >5 stars</div>
         <div><input type="radio" name="rating" value="4">4 stars</div>
         <div><input type="radio" name="rating" value="3">3 stars</div>
         <div><input type="radio" name="rating" value="2">2 stars</div>
         <div><input type="radio" name="rating" value="1">1 star</div>
-      </fieldset>
+      </div>
       <button type="submit" class="submit-button">Submit</button>
-      </form>`;
+    </form>`;
 
     if(store.addingItem === true) {
       $('#bookmark-list-controls').html(addBookmarkHTML);
@@ -83,6 +86,7 @@ const bookmarkList = (function(){
       const newItemUrl = $('.bookmark-list-entry-url').val();
       $('.bookmark-list-entry-url').val('');
       const newItemDesc =  $('.bookmark-list-entry-description').val();
+      console.log(newItemDesc);
       $('.bookmark-list-entry-description').val('');
       const newItemRating = event.currentTarget.rating.value;
       api.createBookmark(newItemTitle, newItemUrl, newItemDesc, newItemRating, response => {

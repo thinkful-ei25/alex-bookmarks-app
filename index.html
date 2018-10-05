@@ -3,6 +3,7 @@
 <head>
   <title>Bookmarking App</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <link rel="stylesheet" href= "styles/styles.css">
 </head>
 <body>
@@ -10,17 +11,19 @@
     <h1>Let's Bookmark!</h1>
     <!-- <form class="adding-bookmark-form form-container" id="adding-bookmark-form">
       <label for="bookmark-list-entry-title">Add a bookmark:</label><br>
-      <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title..." required>
-      <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com" required>
-      <input type="text" name="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description...">
-      <fieldset class="rating-selection">
-        <legend>Rating</legend>
+      <div class="input-field">
+        <input type="text" name="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title..." required>
+        <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com" required>
+        <br><textarea rows =6 cols= 48 name="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description..."></textarea>
+      </div>
+        <div class="rating-selection">
+        <legend>Rate it!</legend>
         <div><input type="radio" name="rating" value="5" checked >5 stars</div>
         <div><input type="radio" name="rating" value="4">4 stars</div>
         <div><input type="radio" name="rating" value="3">3 stars</div>
         <div><input type="radio" name="rating" value="2">2 stars</div>
         <div><input type="radio" name="rating" value="1">1 star</div>
-      </fieldset>
+      </div>
       <button type="submit" class="submit-button">Submit</button>
     </form> -->
     <div class ="bookmark-list-controls container" id="bookmark-list-controls">
