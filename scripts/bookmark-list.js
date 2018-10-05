@@ -5,7 +5,7 @@ const bookmarkList = (function(){
   const generateBookmarkItemElement = function(item) {
     if (item.expanded === true) {
       return `<li class="bookmark-item js-bookmark-element" data-item-id="${item.id}">
-      <h4>${item.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating:${item.rating}/5</h4>
+      <h4>${item.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating:&nbsp;${item.rating}/5</h4>
       <p>${item.desc}</p>
       <div class="bookmark-item-controls">
       <button class="bookmark-item-edit js-item-edit">
@@ -21,7 +21,7 @@ const bookmarkList = (function(){
       </li>`; 
     }
     return `<li class="bookmark-item js-bookmark-element" data-item-id="${item.id}">
-      <h4>${item.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating:${item.rating}/5</h4>
+      <h4>${item.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Rating:&nbsp;${item.rating}/5</h4>
       </li>`;
   };
   
@@ -79,14 +79,13 @@ const bookmarkList = (function(){
   };
 
   const handleNewBookmarkSubmit = function () {
-    $('#adding-bookmark-form').submit( event => {
+    $('.adding-bookmark-form').submit( event => {
       event.preventDefault();
       const newItemTitle = $('.bookmark-list-entry-title').val();
       $('.bookmark-list-entry-title').val('');
       const newItemUrl = $('.bookmark-list-entry-url').val();
       $('.bookmark-list-entry-url').val('');
       const newItemDesc =  $('.bookmark-list-entry-description').val();
-      console.log(newItemDesc);
       $('.bookmark-list-entry-description').val('');
       const newItemRating = event.currentTarget.rating.value;
       api.createBookmark(newItemTitle, newItemUrl, newItemDesc, newItemRating, response => {
