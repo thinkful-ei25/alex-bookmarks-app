@@ -36,6 +36,12 @@ const store = (function(){
   const setError = function(err) {
     this.error = err;
   };
+
+  const closingExpandedPropForRemoval = function (id) {
+    let bookmark = this.list.find(item => item.id === id);
+    setExpandedProp(bookmark);
+    console.log(bookmark.expanded);
+  };
   return {
     list: [],
     addingItem: false,
@@ -45,6 +51,7 @@ const store = (function(){
     addItem,
     setError,
     addExpandedProp,
+    closingExpandedPropForRemoval,
     addEditingProp,
     setExpandedProp,
     setEditingProp,

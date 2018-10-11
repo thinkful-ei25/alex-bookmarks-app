@@ -69,18 +69,22 @@ const bookmarkList = (function(){
     const addBookmarkHTML = `
     <form class="adding-bookmark-form form-container" id="adding-bookmark-form">
       <label for="bookmark-list-entry-title">Add a bookmark:</label><br>
-      <div class="input-field">
-        <input type="text" id="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title...">
-        <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com">
-        <br><textarea rows =6 cols= 48 name="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description..."></textarea>
-      </div>
-        <div class="rating-selection">
-        <legend>Rate it!</legend>
-        <div><input type="radio" name="rating" value="5" checked >5 stars</div>
-        <div><input type="radio" name="rating" value="4">4 stars</div>
-        <div><input type="radio" name="rating" value="3">3 stars</div>
-        <div><input type="radio" name="rating" value="2">2 stars</div>
-        <div><input type="radio" name="rating" value="1">1 star</div>
+      <section class="input-field">
+        <label for="bookmark-list-entry-title">Title:</label><br>
+        <input type="text" id="bookmark-list-entry-title" class="bookmark-list-entry-title" placeholder="Add a title..."><br>
+        <label for="bookmark-list-entry-title">Link:</label><br>
+        <input type="text" name="bookmark-list-entry-url" class="bookmark-list-entry-url" placeholder="https://example.com"><br>
+        <label for="bookmark-list-entry-description">Describe it!</label><br>
+        <textarea rows =5 cols= 48 id="bookmark-list-entry-description" class="bookmark-list-entry-description" placeholder="Add a description..."></textarea>
+      </section>
+        <fieldset class="rating-selection">
+          <legend>Rate it!</legend>
+          <div><input role="group" type="radio" name="rating" value="5" checked >5 stars</div>
+          <div><input role="group" type="radio" name="rating" value="4">4 stars</div>
+          <div><input role="group" type="radio" name="rating" value="3">3 stars</div>
+          <div><input role="group" type="radio" name="rating" value="2">2 stars</div>
+          <div><input role="group" type="radio" name="rating" value="1">1 star</div>
+        </fieldset>
       </div>
       <button class="submit-button">Submit</button><button class="cancel-button">Cancel</button>
     </form>`;
@@ -141,9 +145,10 @@ const bookmarkList = (function(){
   const handleDeleteBookmarkClicked = function() {
     $('.bookmark-list').on('click', '.js-item-delete', event =>{
       const id = getBookmarkIdFromElement(event.currentTarget);
-      store.findAndDelete(id);
-      api.deleteBookMark(id, res => console.log(res));
-      render();
+      store.closingExpandedPropForRemoval(id);
+      // api.deleteBookMark(id, res => console.log(res));
+      // store.findAndDelete(id);
+      // render();
     });
   };
 
@@ -189,14 +194,6 @@ const bookmarkList = (function(){
     });
   }; 
 
-  const handleEditClicked = function() {
-    $('.bookmark-list').on('click', '.js-item-edit', event =>{
-      const id = getBookmarkIdFromElement(event.currentTarget);
-      let bookmark = store.list.find(item => item.id === id);;
-      store.setEditingProp(bookmark);
-      render();
-    });
-  };
 
   const bindEventListeners= function() {
     handleAddBookmarkForm();
