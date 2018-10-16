@@ -1,30 +1,51 @@
 
 
 body {
-  font-family:'Roboto', sans-serif;
-  
+  font-family:'Roboto Condensed', sans-serif;
+  background-color: rgb(67, 67, 255);
 }
 
 .container {
-  max-width:600px;
+  max-width:640px;
   margin: 0 auto;
 }
 
-.default-bookmark-list-form{
-  width:100%;
-  margin-bottom:25px;
+img {
+  text-align: center;
+  display:block;
+  margin-top: 25px;
+  width: 302px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 100px;
+  color: white;
 }
 
-.error-container > section, .error-content{
-  height: 26px;
-  width:100%;
+.default-bookmark-list-form{
+  margin-top: 25px;
+  margin-bottom:25px;
   display: inline-block;
+}
+
+.form-container{
+  margin-top: 25px;
+  margin-bottom:25px;
+  border: 1px solid gray;
+  border-radius: 4px;
+  background-color: white;
+}
+
+
+.error-container > section, .error-content{
   background-color: rgb(238, 95, 95);
   border-radius: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+  margin-top: 25px;
 }
 
 .error-container > p, .error-message {
-  width:570px;
   margin:0;
   padding-left:3px;
   padding-top:5px;
@@ -37,31 +58,25 @@ body {
   width:30px;
   height:25px;
   float: left;
-  border: 1px solid gray;
+  border: 1px solid white;
   border-radius: 4px;
 }
 
-.form-container{
-  width:100%;
-  margin-bottom:25px;
-}
-.bookmark-list-controls {
-  display: inline-block;
-}
 
 .bookmark-list-controls > button, .add-bookmark {
   border: 1px solid gray;
   border-radius: 4px;
+  float:left;
 }
 
 .bookmark-list-controls > select, #select {
   border: 1px solid gray;
   border-radius: 4px;
-}
+  float:right;
+} 
 
 .bookmark-list {
-  width: 600px;
-  padding: 0px;
+  max-width: 640px;
   list-style: none;
 }
 
@@ -70,92 +85,90 @@ body {
   border-radius: 4px;
   margin-bottom: 20px;
   background-color: white;
+  list-style: none;
 }
 
-.bookmark-list > li > p {
+/* .bookmark-list > li > p {
+  width: 33%;
   margin-left: 5px;
   margin-right: 5px;
-}
+} */
 
 .bookmark-list > li> h4 {
-  margin-top: 5px;
-  width: 100%;
-  padding-left: 5px;
-  margin-right: 0px;
-  margin-top:0px;
-  padding-top:3px;
-  background-color: lightgray;
+  margin-top: 2px;
 }
 
-.bookmark-list > li > .bookmark-item-controls > button {
+.bookmark-list > li > .bookmark-item-controls > button, .bookmark-item-delete {
   margin: 5px;
   border: 1px solid gray;
   border-radius: 4px;
 }
-.form-container {
+
+.bookmark-list > li > .bookmark-item-controls > button, .bookmark-item-visit {
+  margin: 5px;
   border: 1px solid gray;
   border-radius: 4px;
 }
 
 
-.adding-bookmark-form > .input-field {
-  width:75%;
-  display: inline-block;
-  float: left;
-  padding-left: 10px;
-  padding-right:10px;
-}
 
-.adding-bookmark-form > label { 
-  margin: 10px;
-  font-size:18px;
-  font-weight: 600; 
+.adding-bookmark-form { 
+  display: inline-block;
+  text-align: center;
 }
 
 
 .adding-bookmark-form > .inputfield > button, .submit-button, .cancel-button { 
   margin:10px;
+  display: inline-block;
   margin-left:10px;
   border: 1px solid gray;
   border-radius: 4px;
   background-color: lightgray;
 }
 
-.adding-bookmark-form > .inputfield > input, .bookmark-list-entry-url { 
-  width: 150px;
-  margin-bottom:10px;
-  margin-top:10px;
+.adding-bookmark-form > .input-field > label { 
+  font-size: 20px;
+} 
+
+.adding-bookmark-form > .describe-and-rate-field > label { 
+  font-size: 20px;
+  padding: 3px;
+} 
+
+ .adding-bookmark-form > .inputfield > input, .bookmark-list-entry-url { 
   border: 1px solid gray;
   border-radius: 4px;
-}
+  float: left;
+} 
 
 .adding-bookmark-form > .inputfield > input, .bookmark-list-entry-title { 
-  width: 150px;
-  margin-bottom:10px;
-  margin-top:10px;
   border: 1px solid gray;
   border-radius: 4px;
+  float: left;
+  clear:right;
 }
 
 .adding-bookmark-form > .inputfield > textarea, .bookmark-list-entry-description { 
-  width: 405px;
   border-radius: 4px;
   border: 1px solid gray;
+  margin-bottom: 5px;
+}
+
+.adding-bookmark-form > .describe-and-rate-field > fieldset{
+  display:inline;
+  border: 1px solid white;
 }
 
 .adding-bookmark-form >.rating-selection {
-  width: 20%;
-  height: 161px;
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid gray;
+  display:inline;
 }
 
 .adding-bookmark-form >.rating-selection > div {
   margin:7.5px;
 }
 
-.adding-bookmark-form >.rating-selection > legend {
-  margin-top:10px;
-  margin-left:15px;
+.adding-bookmark-form >.describe-and-rate-field > .rating-selection > legend {
+  font-size: 20px;
 }
+

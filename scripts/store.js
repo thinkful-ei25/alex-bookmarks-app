@@ -39,7 +39,7 @@ const store = (function(){
 
   const closingExpandedPropForRemoval = function (id) {
     let bookmark = this.list.find(item => item.id === id);
-    setExpandedProp(bookmark);
+    delete bookmark.expanded;
     console.log(bookmark.expanded);
   };
   return {
